@@ -38,6 +38,9 @@ dependencies:
   cupertino_icons: ^1.0.8
   http: ^1.2.2
   firebase_core: ^3.9.0
+  timezone:
+  flutter_local_notifications:
+  flutter_native_timezone:
 
 dev_dependencies:
   flutter_test:

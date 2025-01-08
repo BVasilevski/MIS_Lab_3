@@ -38,7 +38,6 @@ class _HomeState extends State<Home> {
       var data = json.decode(response.body);
       String joke = data['setup'] + "\n\n" + data['punchline'];
 
-      // Navigate to the new screen with the joke
       Navigator.push(
         context,
         MaterialPageRoute(
@@ -67,12 +66,10 @@ class _HomeState extends State<Home> {
       ),
       body: Stack(
         children: [
-          // Main content wrapped in SafeArea
           SafeArea(
             child: JokeTypesGrid(jokeTypes: jokes),
           ),
 
-          // Top-left "Joke" button
           Positioned(
             top: 16,
             left: 16,
@@ -93,10 +90,8 @@ class _HomeState extends State<Home> {
         ],
       ),
 
-      // Floating action button for Favorites
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Navigate to the FavoritesScreen
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => FavoritesScreen()),

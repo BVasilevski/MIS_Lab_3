@@ -5,7 +5,6 @@ import '../provider/FavoriteJokeProvider.dart';
 class FavoritesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // Accessing the list of favorite jokes using Provider
     final favoriteJokes =
         Provider.of<FavoriteJokesProvider>(context).favoriteJokes;
 
@@ -28,7 +27,6 @@ class FavoritesScreen extends StatelessWidget {
                     trailing: IconButton(
                       icon: Icon(Icons.delete, color: Colors.red),
                       onPressed: () {
-                        // Remove the joke from the favorites
                         Provider.of<FavoriteJokesProvider>(context,
                                 listen: false)
                             .removeFavoriteJoke(joke);

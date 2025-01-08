@@ -9,12 +9,10 @@ class FavoriteJokesProvider with ChangeNotifier {
 
   List<Joke> get favoriteJokes => _favoriteJokes;
 
-  // Constructor: Load favorites from shared_preferences
   FavoriteJokesProvider() {
     _loadFavoriteJokes();
   }
 
-  // Method to load the saved favorite jokes from shared_preferences
   Future<void> _loadFavoriteJokes() async {
     final prefs = await SharedPreferences.getInstance();
     final String? favoriteJokesString = prefs.getString('favorite_jokes');
@@ -24,10 +22,9 @@ class FavoriteJokesProvider with ChangeNotifier {
       _favoriteJokes =
           decodedList.map((jokeData) => Joke.fromJson(jokeData)).toList();
     }
-    notifyListeners(); // Notify listeners after loading the data
+    notifyListeners();
   }
 
-  // Method to save the favorite jokes to shared_preferences
   Future<void> _saveFavoriteJokes() async {
     final prefs = await SharedPreferences.getInstance();
     final String encodedList =
@@ -39,17 +36,15 @@ class FavoriteJokesProvider with ChangeNotifier {
     return _favoriteJokes.any((favoriteJoke) => favoriteJoke.id == joke.id);
   }
 
-  // Method to add a joke to favorites
   void addFavoriteJoke(Joke joke) {
     _favoriteJokes.add(joke);
-    _saveFavoriteJokes(); // Save to shared_preferences
-    notifyListeners(); // Notify listeners
+    _saveFavoriteJokes();
+    notifyListeners();
   }
 
-  // Method to remove a joke from favorites
   void removeFavoriteJoke(Joke joke) {
     _favoriteJokes.removeWhere((favoriteJoke) => favoriteJoke.id == joke.id);
-    _saveFavoriteJokes(); // Save to shared_preferences
-    notifyListeners(); // Notify listeners
+    _saveFavoriteJokes();
+    notifyListeners();
   }
 }
